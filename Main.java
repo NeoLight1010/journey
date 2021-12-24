@@ -8,6 +8,8 @@ class Main {
 
     public static void main(String[] args) {
         Main app = new Main();
+        app.testSetup();
+
         Scanner scanner = new Scanner(System.in);
 
         while (true) {
@@ -17,6 +19,13 @@ class Main {
                 app.menuLoggedIn(scanner);
             }
         }
+    }
+
+    private void testSetup() {
+        Paciente testPaciente = new Paciente("anthony", "anthony", "Anthony", "Suárez", LocalDate.parse("2003-12-20"),
+                Sexo.MASCULINO, 70f, 178, "102938", "Estudiante");
+
+        this.pacientes.put("anthony", testPaciente);
     }
 
     private void menuNotLoggedIn(Scanner scanner) {
@@ -58,8 +67,7 @@ class Main {
         String password = Input.leerString(scanner, "Contraseña: ");
 
         // Si el usuario no existe o contraseña es inválida.
-        if (!this.pacientes.containsKey(username) || 
-            !this.pacientes.get(username).getPassword().equals(password)) {
+        if (!this.pacientes.containsKey(username) || !this.pacientes.get(username).getPassword().equals(password)) {
             imprimirErrorInicioSesion();
             return;
         }
@@ -98,7 +106,8 @@ class Main {
         String numeroContacto = Input.leerString(scanner, "Ingrese un número de contacto:\n");
         String ocupacion = Input.leerString(scanner, "Ingrese la ocupación del paciente:\n");
 
-        Paciente paciente = new Paciente(username, password, nombre, apellido, fechaNacimiento, sexo, peso, altura, numeroContacto, ocupacion);
+        Paciente paciente = new Paciente(username, password, nombre, apellido, fechaNacimiento, sexo, peso, altura,
+                numeroContacto, ocupacion);
         this.pacientes.put(username, paciente);
 
         System.out.println("¡Registro exitoso!");
