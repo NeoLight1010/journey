@@ -75,4 +75,23 @@ public class Input {
             }
         }
     }
+
+    // Enum
+    public static <E extends Enum<E>> E leerEnum(Scanner scanner, String prompt, Class<E> enumClass) {
+        var enumConstants = enumClass.getEnumConstants();
+        StringBuilder completePrompt = new StringBuilder();
+
+        // Generate options.
+        int i = 1;
+        for (E value : enumConstants) {
+            completePrompt.append(i + ". " + value + "\n");
+            i++;
+        }
+
+        completePrompt.append(prompt);
+
+        int inputInt = Input.leerEnteroEntre(scanner, completePrompt.toString(), 1, enumConstants.length);
+
+        return enumConstants[inputInt - 1];
+    }
 }

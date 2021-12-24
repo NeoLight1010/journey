@@ -23,15 +23,17 @@ public class Cli {
 
     public static void menuLoggedIn(Main app, Scanner scanner) {
         System.out.println("Menú");
-        System.out.println("1. Cerrar sesión.");
+        System.out.println("1. Ingresar información de un día.");
+        System.out.println("2. Cerrar sesión.");
 
-        int opcion = Input.leerEnteroEntre(scanner, ": ", 1, 1);
+        int opcion = Input.leerEnteroEntre(scanner, ": ", 1, 2);
 
         switch (opcion) {
             case 1:
-                app.loggedInPaciente = null;
+                cliIngresarDatosDia(app, scanner);
                 break;
             default:
+                app.loggedInPaciente = null;
                 break;
         }
     }
@@ -85,6 +87,22 @@ public class Cli {
         app.pacientes.put(username, paciente);
 
         System.out.println("¡Registro exitoso!");
+    }
+
+    public static void cliIngresarDatosDia(Main app, Scanner scanner) {
+        LocalDate fecha = Input.leerFecha(scanner, "Ingrese la fecha: ");
+        // TODO: validar registros dobles en el mismo día.
+        // NOTE: dar opción para sobreescribir registro.
+
+        Emocion emocion = Input.leerEnum(scanner, "Ingrese la emoción predominante: ", Emocion.class);
+
+        // Leer InfoEjercicio
+        int tiempoEjercicio = Input.leerEntero(scanner, "¿Cuántos minutos de ejercicio hizo en el día?: ");
+        
+        IntensidadEjercicio intensidad = Input.leerEnum(scanner, "Ingrese la intensidad de ejercicio realizado: ", IntensidadEjercicio.class);
+
+        var infoEjercicio = new InfoEjercicio(tiempoEjercicio, intensidad);
+        // Leer InfoAlimentacion.
     }
 
     // Mensajes de error
