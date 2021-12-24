@@ -4,28 +4,52 @@ import java.util.Scanner;
 
 class Main {
     HashMap<String, Paciente> pacientes = new HashMap<>();
+    Paciente loggedInPaciente = null;
 
     public static void main(String[] args) {
         Main app = new Main();
         Scanner scanner = new Scanner(System.in);
 
         while (true) {
-            System.out.println("Menú principal");
-            System.out.println("1. Iniciar sesión.");
-            System.out.println("2. Registrarse.");
-
-            int opcion = Input.leerEntero(scanner, ": ");
-
-            switch (opcion) {
-                case 1:
-                    app.iniciarSesion(scanner);
-                    break;
-                case 2:
-                    app.registrarUsuario(scanner);
-                    break;
-                default:
-                    break;
+            if (app.loggedInPaciente == null) {
+                app.menuNotLoggedIn(scanner);
+            } else {
+                app.menuLoggedIn(scanner);
             }
+        }
+    }
+
+    private void menuNotLoggedIn(Scanner scanner) {
+        System.out.println("Menú principal");
+        System.out.println("1. Iniciar sesión.");
+        System.out.println("2. Registrarse.");
+
+        int opcion = Input.leerEnteroEntre(scanner, ": ", 1, 2);
+
+        switch (opcion) {
+            case 1:
+                this.iniciarSesion(scanner);
+                break;
+            case 2:
+                this.registrarUsuario(scanner);
+                break;
+            default:
+                break;
+        }
+    }
+
+    private void menuLoggedIn(Scanner scanner) {
+        System.out.println("Menú");
+        System.out.println("1. Cerrar sesión.");
+
+        int opcion = Input.leerEnteroEntre(scanner, ": ", 1, 1);
+
+        switch (opcion) {
+            case 1:
+                this.loggedInPaciente = null;
+                break;
+            default:
+                break;
         }
     }
 
@@ -44,6 +68,7 @@ class Main {
             return;
         }
 
+        this.loggedInPaciente = this.pacientes.get(username);
         System.out.println("¡Inicio de sesión exitoso!");
     }
 
