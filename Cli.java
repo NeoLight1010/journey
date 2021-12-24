@@ -102,7 +102,40 @@ public class Cli {
         IntensidadEjercicio intensidad = Input.leerEnum(scanner, "Ingrese la intensidad de ejercicio realizado: ", IntensidadEjercicio.class);
 
         var infoEjercicio = new InfoEjercicio(tiempoEjercicio, intensidad);
+
         // Leer InfoAlimentacion.
+        var infoAlimentacion = new InfoAlimentacion();
+
+        System.out.println("########### DESAYUNO ###########");
+        int n = Input.leerEntero(scanner, "¿Cuántos alimentos distintos consumió en el desayuno?");
+
+        for (int i = 0; i < n; i++) {
+            
+            Alimento alimento = Input.leerArrayListOpciones(scanner, ": ", app.bancoAlimentos);
+            var porciones = Input.leerEntero(scanner, "¿Cuántas porciones de " + alimento.getNombre() + " consumió?: ");
+
+            infoAlimentacion.desayuno.put(alimento, porciones);
+        }
+
+        System.out.println("########### ALMUERZO ###########");
+        n = Input.leerEntero(scanner, "¿Cuántos alimentos distintos consumió en el almuerzo?");
+
+        for (int i = 0; i < n; i++) {
+            Alimento alimento = Input.leerArrayListOpciones(scanner, ": ", app.bancoAlimentos);
+            var porciones = Input.leerEntero(scanner, "¿Cuántas porciones de " + alimento.getNombre() + " consumió?: ");
+
+            infoAlimentacion.almuerzo.put(alimento, porciones);
+        }
+
+        System.out.println("########### MERIENDA ###########");
+        n = Input.leerEntero(scanner, "¿Cuántos alimentos distintos consumió en la merienda?");
+
+        for (int i = 0; i < n; i++) {
+            Alimento alimento = Input.leerArrayListOpciones(scanner, ": ", app.bancoAlimentos);
+            var porciones = Input.leerEntero(scanner, "¿Cuántas porciones de " + alimento.getNombre() + " consumió?: ");
+
+            infoAlimentacion.merienda.put(alimento, porciones);
+        }
     }
 
     // Mensajes de error

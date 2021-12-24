@@ -1,7 +1,10 @@
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Scanner;
+import java.util.stream.StreamSupport;
 
 public class Input {
     public static void imprimirErrorInputGenerico() {
@@ -76,22 +79,29 @@ public class Input {
         }
     }
 
-    // Enum
-    public static <E extends Enum<E>> E leerEnum(Scanner scanner, String prompt, Class<E> enumClass) {
-        var enumConstants = enumClass.getEnumConstants();
+    // Iterable
+    public static <T> T leerArrayListOpciones(Scanner scanner, String prompt, ArrayList<T> opciones) {
         StringBuilder completePrompt = new StringBuilder();
 
         // Generate options.
         int i = 1;
-        for (E value : enumConstants) {
+        for (T value : opciones) {
             completePrompt.append(i + ". " + value + "\n");
             i++;
         }
 
         completePrompt.append(prompt);
 
-        int inputInt = Input.leerEnteroEntre(scanner, completePrompt.toString(), 1, enumConstants.length);
+        int inputInt = Input.leerEnteroEntre(scanner, completePrompt.toString(), 1, opciones.size());
 
-        return enumConstants[inputInt - 1];
+        return opciones.get(inputInt - 1);
+    }
+
+    // Enum
+    public static <E extends Enum<E>> E leerEnum(Scanner scanner, String prompt, Class<E> enumClass) {
+        ArrayList<E> constants = new ArrayList<>();
+        Collections.addAll(constants, enumClass.getEnumConstants());
+
+        return leerArrayListOpciones(scanner, prompt, constants);
     }
 }
