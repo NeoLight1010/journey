@@ -28,10 +28,10 @@ class Main {
 
         switch (opcion) {
             case 1:
-                this.iniciarSesion(scanner);
+                this.cliIniciarSesion(scanner);
                 break;
             case 2:
-                this.registrarUsuario(scanner);
+                this.cliRegistrarUsuario(scanner);
                 break;
             default:
                 break;
@@ -53,11 +53,7 @@ class Main {
         }
     }
 
-    private void imprimirErrorInicioSesion() {
-        System.out.println("Nombre de usuario o contraseña inválida.");
-    }
-
-    public void iniciarSesion(Scanner scanner) {
+    public void cliIniciarSesion(Scanner scanner) {
         String username = Input.leerString(scanner, "Nombre de usuario: ");
         String password = Input.leerString(scanner, "Contraseña: ");
 
@@ -72,7 +68,7 @@ class Main {
         System.out.println("¡Inicio de sesión exitoso!");
     }
 
-    public void registrarUsuario(Scanner scanner) {
+    public void cliRegistrarUsuario(Scanner scanner) {
         String username = "";
 
         while (true) {
@@ -106,5 +102,11 @@ class Main {
         this.pacientes.put(username, paciente);
 
         System.out.println("¡Registro exitoso!");
+    }
+
+    // Mensajes de error
+
+    private void imprimirErrorInicioSesion() {
+        System.out.println("Nombre de usuario o contraseña inválida.");
     }
 }
