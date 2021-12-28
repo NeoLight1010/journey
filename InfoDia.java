@@ -12,4 +12,21 @@ public class InfoDia {
         this.infoEjercicio = infoEjercicio;
         this.infoAlimentacion = infoAlimentacion;
     }
+
+    // Getters and setters
+    LocalDate getFecha() {
+        return this.fecha;
+    }
+
+    Emocion getEmocion() {
+        return this.emocion;
+    }
+
+    InfoEjercicio getInfoEjercicio() {
+        return this.infoEjercicio;
+    }
+
+    InfoAlimentacion getInfoAlimentacion() {
+        return this.infoAlimentacion;
+    }
 }

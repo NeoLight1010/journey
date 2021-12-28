@@ -7,4 +7,15 @@ public class InfoEjercicio {
         this.tiempo = tiempo;
         this.intensidad = intensidad;
     }
+
+    // Getters and setters
+
+    public int getTiempo() {
+        return tiempo;
+    }
+
+    public IntensidadEjercicio getIntensidad() {
+        return intensidad;
+    }
+
 }

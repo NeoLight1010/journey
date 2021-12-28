@@ -36,6 +36,23 @@ class Main {
         Paciente testPaciente = new Paciente("anthony", "anthony", "Anthony", "Suárez", LocalDate.parse("2003-12-20"),
                 Sexo.MASCULINO, 70f, 178, "102938", "Estudiante");
 
-        this.pacientes.put("anthony", testPaciente);
+        InfoAlimentacion testAlimentacion = new InfoAlimentacion();
+        testAlimentacion.desayuno.put(bancoAlimentos.get(0), 10);
+        testAlimentacion.desayuno.put(bancoAlimentos.get(1), 5);
+        testAlimentacion.desayuno.put(bancoAlimentos.get(2), 7);
+
+        testAlimentacion.almuerzo.put(bancoAlimentos.get(0), 8);
+        testAlimentacion.almuerzo.put(bancoAlimentos.get(1), 9);
+        testAlimentacion.almuerzo.put(bancoAlimentos.get(2), 5);
+
+        testAlimentacion.merienda.put(bancoAlimentos.get(0), 6);
+        testAlimentacion.merienda.put(bancoAlimentos.get(1), 10);
+        testAlimentacion.merienda.put(bancoAlimentos.get(2), 2);
+
+        testPaciente.infoDiaria.add(
+                new InfoDia(LocalDate.now(), Emocion.FELIZ, new InfoEjercicio(30, IntensidadEjercicio.FUERTE),
+                        testAlimentacion));
+
+        this.pacientes.put(testPaciente.getUsername(), testPaciente);
     }
 }

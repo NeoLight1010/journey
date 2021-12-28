@@ -13,7 +13,17 @@ public class Alimento {
         return this.nombre;
     }
 
+    // Getters and setters
+
     public String getNombre() {
         return this.nombre;
+    }
+
+    public TipoAlimento getTipo() {
+        return this.tipo;
+    }
+
+    public float getCaloriasPorPorcion() {
+        return this.caloriasPorPorcion;
     }
 }

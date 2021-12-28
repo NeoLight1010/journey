@@ -4,7 +4,6 @@ import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Scanner;
-import java.util.stream.StreamSupport;
 
 public class Input {
     public static void imprimirErrorInputGenerico() {
@@ -55,12 +54,10 @@ public class Input {
     }
 
     public static LocalDate leerFecha(Scanner scanner, String prompt) {
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
-
         while(true) {
             try {
                 System.out.print(prompt);
-                return LocalDate.parse(scanner.nextLine(), formatter);
+                return LocalDate.parse(scanner.nextLine(), Constantes.DATE_FORMATTER);
             } catch (DateTimeParseException e) {
                 System.out.println("Input inválido. Ingrese una fecha válida (dd-mm-yyyy).");
             }
