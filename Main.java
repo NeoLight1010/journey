@@ -4,6 +4,8 @@ import java.util.HashMap;
 import java.util.Scanner;
 
 class Main {
+    boolean isRunning = true;
+
     ArrayList<Alimento> bancoAlimentos = new ArrayList<>();
     HashMap<String, Paciente> pacientes = new HashMap<>();
     Paciente loggedInPaciente = null;
@@ -15,7 +17,7 @@ class Main {
 
         Scanner scanner = new Scanner(System.in);
 
-        while (true) {
+        while (app.isRunning) {
             if (app.loggedInPaciente == null) {
                 Cli.menuNotLoggedIn(app, scanner);
             } else {

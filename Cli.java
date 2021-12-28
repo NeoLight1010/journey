@@ -6,8 +6,9 @@ public class Cli {
         System.out.println("Menú principal");
         System.out.println("1. Iniciar sesión.");
         System.out.println("2. Registrarse.");
+        System.out.println("3. Salir.");
 
-        int opcion = Input.leerEnteroEntre(scanner, ": ", 1, 2);
+        int opcion = Input.leerEnteroEntre(scanner, ": ", 1, 3);
 
         switch (opcion) {
             case 1:
@@ -16,6 +17,10 @@ public class Cli {
             case 2:
                 cliRegistrarUsuario(app, scanner);
                 break;
+            case 3:
+                System.out.println("¡Gracias por usar Journey!");
+                app.isRunning = false;
+                return;
             default:
                 break;
         }
