@@ -1,4 +1,5 @@
 import java.time.LocalDate;
+import java.util.ArrayList;
 
 class Paciente {
   private String username;
@@ -14,6 +15,8 @@ class Paciente {
 
     private String numeroContacto;
     private String ocupacion;
+
+    ArrayList<InfoDia> infoDiaria = new ArrayList<>();
 
     public Paciente(String username, String password, String primerNombre, String apellido, LocalDate fechaNacimiento, Sexo sexo, float peso, int altura,
                     String numeroContacto, String ocupacion) {
