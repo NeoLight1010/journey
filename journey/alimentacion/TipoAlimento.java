@@ -1,3 +1,5 @@
+package journey.alimentacion;
+
 public enum TipoAlimento {
     LIQUIDO,
     VEGETAL,

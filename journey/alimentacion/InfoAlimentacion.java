@@ -1,9 +1,11 @@
+package journey.alimentacion;
+
 import java.util.HashMap;
 
 public class InfoAlimentacion {
-    HashMap<Alimento, Integer> desayuno = new HashMap<>();
-    HashMap<Alimento, Integer> almuerzo = new HashMap<>();
-    HashMap<Alimento, Integer> merienda = new HashMap<>();
+    public HashMap<Alimento, Integer> desayuno = new HashMap<>();
+    public HashMap<Alimento, Integer> almuerzo = new HashMap<>();
+    public HashMap<Alimento, Integer> merienda = new HashMap<>();
 
     public float caloriasTotales() {
         float resultado = 0;

@@ -1,6 +1,17 @@
+package journey;
+
 import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.Scanner;
+
+import journey.alimentacion.Alimento;
+import journey.alimentacion.InfoAlimentacion;
+import journey.dia.Emocion;
+import journey.dia.InfoDia;
+import journey.ejercicio.InfoEjercicio;
+import journey.ejercicio.IntensidadEjercicio;
+import journey.paciente.Paciente;
+import journey.paciente.Sexo;
 
 public class Cli {
     public static void menuNotLoggedIn(Main app, Scanner scanner) {

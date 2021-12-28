@@ -1,4 +1,9 @@
+package journey.dia;
+
 import java.time.LocalDate;
+
+import journey.alimentacion.InfoAlimentacion;
+import journey.ejercicio.InfoEjercicio;
 
 public class InfoDia {
     private LocalDate fecha;
@@ -6,7 +11,7 @@ public class InfoDia {
     private InfoEjercicio infoEjercicio;
     private InfoAlimentacion infoAlimentacion;
 
-    InfoDia(LocalDate fecha, Emocion emocion, InfoEjercicio infoEjercicio, InfoAlimentacion infoAlimentacion) {
+    public InfoDia(LocalDate fecha, Emocion emocion, InfoEjercicio infoEjercicio, InfoAlimentacion infoAlimentacion) {
         this.fecha = fecha;
         this.emocion = emocion;
         this.infoEjercicio = infoEjercicio;
@@ -14,19 +19,19 @@ public class InfoDia {
     }
 
     // Getters and setters
-    LocalDate getFecha() {
+    public LocalDate getFecha() {
         return this.fecha;
     }
 
-    Emocion getEmocion() {
+    public Emocion getEmocion() {
         return this.emocion;
     }
 
-    InfoEjercicio getInfoEjercicio() {
+    public InfoEjercicio getInfoEjercicio() {
         return this.infoEjercicio;
     }
 
-    InfoAlimentacion getInfoAlimentacion() {
+    public InfoAlimentacion getInfoAlimentacion() {
         return this.infoAlimentacion;
     }
 }

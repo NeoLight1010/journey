@@ -1,3 +1,5 @@
+package journey;
+
 import java.time.format.DateTimeFormatter;
 
 public class Constantes {

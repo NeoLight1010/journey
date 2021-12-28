@@ -1,7 +1,19 @@
+package journey;
+
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Scanner;
+
+import journey.alimentacion.Alimento;
+import journey.alimentacion.InfoAlimentacion;
+import journey.alimentacion.TipoAlimento;
+import journey.dia.Emocion;
+import journey.dia.InfoDia;
+import journey.ejercicio.InfoEjercicio;
+import journey.ejercicio.IntensidadEjercicio;
+import journey.paciente.Paciente;
+import journey.paciente.Sexo;
 
 class Main {
     boolean isRunning = true;

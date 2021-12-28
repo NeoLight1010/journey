@@ -1,7 +1,11 @@
+package journey.paciente;
+
 import java.time.LocalDate;
 import java.util.ArrayList;
 
-class Paciente {
+import journey.dia.InfoDia;
+
+public class Paciente {
   private String username;
     private String password;
     private String primerNombre;
@@ -16,7 +20,7 @@ class Paciente {
     private String numeroContacto;
     private String ocupacion;
 
-    ArrayList<InfoDia> infoDiaria = new ArrayList<>();
+    public ArrayList<InfoDia> infoDiaria = new ArrayList<>();
 
     public Paciente(String username, String password, String primerNombre, String apellido, LocalDate fechaNacimiento, Sexo sexo, float peso, int altura,
                     String numeroContacto, String ocupacion) {

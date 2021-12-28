@@ -1,3 +1,5 @@
+package journey.dia;
+
 public enum Emocion {
     FELIZ,
     TRISTE,
