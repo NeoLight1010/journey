@@ -7,6 +7,7 @@ import journey.alimentacion.Alimento;
 import journey.alimentacion.InfoAlimentacion;
 import journey.cli.printer.BannerPrinter;
 import journey.cli.printer.InfoDiaPrinter;
+import journey.cli.printer.PacientePrinter;
 import journey.dia.Emocion;
 import journey.dia.InfoDia;
 import journey.ejercicio.InfoEjercicio;
@@ -43,9 +44,10 @@ public class Cli {
         System.out.println("Menú");
         System.out.println("1. Ingresar información de un día.");
         System.out.println("2. Visualizar información diaria.");
-        System.out.println("3. Cerrar sesión.");
+        System.out.println("3. Visualizar perfil de paciente.");
+        System.out.println("4. Cerrar sesión.");
 
-        int opcion = Input.leerEnteroEntre(scanner, ": ", 1, 3);
+        int opcion = Input.leerEnteroEntre(scanner, ": ", 1, 4);
 
         switch (opcion) {
             case 1:
@@ -54,13 +56,16 @@ public class Cli {
             case 2:
                 cliVisualizarInfoDiaria(app, scanner);
                 break;
+            case 3:
+                cliVisualizarPerfilPaciente(app, scanner);
+                break;
             default:
                 app.loggedInPaciente = null;
                 break;
         }
     }
 
-    public static void cliIniciarSesion(Main app, Scanner scanner) {
+    private static void cliIniciarSesion(Main app, Scanner scanner) {
         String username = Input.leerString(scanner, "Nombre de usuario: ");
         String password = Input.leerString(scanner, "Contraseña: ");
 
@@ -74,7 +79,7 @@ public class Cli {
         System.out.println("¡Inicio de sesión exitoso!");
     }
 
-    public static void cliRegistrarUsuario(Main app, Scanner scanner) {
+    private static void cliRegistrarUsuario(Main app, Scanner scanner) {
         String username = "";
 
         while (true) {
@@ -111,7 +116,7 @@ public class Cli {
         System.out.println("¡Registro exitoso!");
     }
 
-    public static void cliIngresarDatosDia(Main app, Scanner scanner) {
+    private static void cliIngresarDatosDia(Main app, Scanner scanner) {
         LocalDate fecha = Input.leerFecha(scanner, "Ingrese la fecha: ");
         // TODO: validar registros dobles en el mismo día.
         // NOTE: dar opción para sobreescribir registro.
@@ -167,7 +172,7 @@ public class Cli {
         System.out.println("¡Información diaria añadida exitosamente!");
     }
 
-    public static void cliVisualizarInfoDiaria(Main app, Scanner scanner) {
+    private static void cliVisualizarInfoDiaria(Main app, Scanner scanner) {
         System.out.println("1. Visualizar toda la información diaria.");
         System.out.println("2. Visualizar información de un día especifico.");
 
@@ -183,9 +188,7 @@ public class Cli {
         }
     }
 
-    //
-
-    public static void cliVisualizarTodaInfoDiaria(Main app, Scanner scanner) {
+    private static void cliVisualizarTodaInfoDiaria(Main app, Scanner scanner) {
         if (app.loggedInPaciente.infoDiaria.isEmpty()) {
             System.out.println("¡No hay información diaria registrada!");
             return;
@@ -197,7 +200,7 @@ public class Cli {
     }
 
     private static void cliVisualizarInfoDiaEspecifico(Main app, Scanner scanner) {
-        LocalDate fecha = Input.leerFecha(scanner, "Ingrese la fecha: (" + Constantes.DATE_PATTERN + ")");
+        LocalDate fecha = Input.leerFecha(scanner, "Ingrese la fecha: (" + Constantes.DATE_PATTERN + "): ");
 
         InfoDia infoDia = app.loggedInPaciente.buscarInfoDiaPorFecha(fecha);
 
@@ -207,6 +210,10 @@ public class Cli {
         }
 
         InfoDiaPrinter.imprimirInfoDia(infoDia);
+    }
+
+    private static void cliVisualizarPerfilPaciente(Main app, Scanner scanner) {
+        PacientePrinter.imprimirPerfilPaciente(app.loggedInPaciente);
     }
 
     // Mensajes de error

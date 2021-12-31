@@ -45,7 +45,7 @@ class Main {
     }
 
     private void testSetup() {
-        Paciente testPaciente = new Paciente("anthony", "anthony", "Anthony", "Suárez", LocalDate.parse("2003-12-20"),
+        Paciente testPaciente = new Paciente("admin", "admin", "Anthony", "Suárez", LocalDate.parse("2003-12-20"),
                 Sexo.MASCULINO, 70f, 178, "102938", "Estudiante");
 
         InfoAlimentacion testAlimentacion = new InfoAlimentacion();
