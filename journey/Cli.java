@@ -1,11 +1,12 @@
 package journey;
 
 import java.time.LocalDate;
-import java.util.HashMap;
 import java.util.Scanner;
 
 import journey.alimentacion.Alimento;
 import journey.alimentacion.InfoAlimentacion;
+import journey.cli.printer.banner.BannerPrinter;
+import journey.cli.printer.infoDia.InfoDiaPrinter;
 import journey.dia.Emocion;
 import journey.dia.InfoDia;
 import journey.ejercicio.InfoEjercicio;
@@ -128,7 +129,7 @@ public class Cli {
         // Leer InfoAlimentacion.
         var infoAlimentacion = new InfoAlimentacion();
 
-        printHeader1("DESAYUNO");
+        BannerPrinter.printHeader1("DESAYUNO");
         int n = Input.leerEntero(scanner, "¿Cuántos alimentos distintos consumió en el desayuno?");
 
         for (int i = 0; i < n; i++) {
@@ -139,7 +140,7 @@ public class Cli {
             infoAlimentacion.desayuno.put(alimento, porciones);
         }
 
-        printHeader1("ALMUERZO");
+        BannerPrinter.printHeader1("ALMUERZO");
         n = Input.leerEntero(scanner, "¿Cuántos alimentos distintos consumió en el almuerzo?");
 
         for (int i = 0; i < n; i++) {
@@ -149,7 +150,7 @@ public class Cli {
             infoAlimentacion.almuerzo.put(alimento, porciones);
         }
 
-        printHeader1("MERIENDA");
+        BannerPrinter.printHeader1("MERIENDA");
         n = Input.leerEntero(scanner, "¿Cuántos alimentos distintos consumió en la merienda?");
 
         for (int i = 0; i < n; i++) {
@@ -177,6 +178,7 @@ public class Cli {
                 cliVisualizarTodaInfoDiaria(app, scanner);
                 break;
             case 2:
+                cliVisualizarInfoDiaEspecifico(app, scanner);
                 break;
         }
     }
@@ -190,66 +192,21 @@ public class Cli {
         }
 
         for (var infoDia : app.loggedInPaciente.infoDiaria) {
-            printHeader1(infoDia.getFecha().format(Constantes.DATE_FORMATTER));
-
-            System.out.println("Emoción: " + infoDia.getEmocion());
-
-            // Ejercicio
-            printHeader2("Ejercicio");
-
-            var ejercicio = infoDia.getInfoEjercicio();
-            System.out.println("Tiempo: " + ejercicio.getTiempo() + " min.");
-            System.out.println("Intensidad: " + ejercicio.getIntensidad());
-
-            // Alimentación
-            printHeader2("Alimentación");
-            var alimentacion = infoDia.getInfoAlimentacion();
-
-            printHeader3("Desayuno");
-            imprimirInfoComida(alimentacion.desayuno);
-
-            printHeader3("Almuerzo");
-            imprimirInfoComida(alimentacion.almuerzo);
-
-            printHeader3("Merienda");
-            imprimirInfoComida(alimentacion.merienda);
-
-            System.out.println("Calorías totales: " + alimentacion.caloriasTotales());
+            InfoDiaPrinter.imprimirInfoDia(infoDia);
         }
     }
 
-    /**
-     * Imprime la información de una comida del día (desayuno, almuerzo o merienda)
-     * de un {@link InfoAlimentacion}.
-     */
-    private static void imprimirInfoComida(HashMap<Alimento, Integer> comida) {
-        for (var alimento : comida.keySet()) {
-            var porciones = comida.get(alimento);
+    private static void cliVisualizarInfoDiaEspecifico(Main app, Scanner scanner) {
+        LocalDate fecha = Input.leerFecha(scanner, "Ingrese la fecha: (" + Constantes.DATE_PATTERN + ")");
 
-            System.out.println("Nombre: " + alimento.getNombre());
-            System.out.println("Tipo: " + alimento.getTipo());
-            System.out.println("Porciones: " + porciones);
-            System.out.println("Calorías: " + alimento.getCaloriasPorPorcion() * porciones);
-            System.out.println();
+        InfoDia infoDia = app.loggedInPaciente.buscarInfoDiaPorFecha(fecha);
+
+        if (infoDia == null) {
+            System.out.println("Información de fecha no encontrada.");
+            return;
         }
-    }
 
-    // Utils
-
-    public static void printBanner(String border, String title) {
-        System.out.println(border + " " + title + " " + border);
-    }
-
-    public static void printHeader1(String title) {
-        printBanner("###########", title);
-    }
-
-    public static void printHeader2(String title) {
-        printBanner("+++++++++++", title);
-    }
-
-    public static void printHeader3(String title) {
-        printBanner("-----------", title);
+        InfoDiaPrinter.imprimirInfoDia(infoDia);
     }
 
     // Mensajes de error
