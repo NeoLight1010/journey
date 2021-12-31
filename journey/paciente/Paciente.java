@@ -1,9 +1,10 @@
 package journey.paciente;
 
 import java.time.LocalDate;
-import java.time.ZoneId;
 import java.time.temporal.ChronoUnit;
-import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.SortedSet;
+import java.util.TreeSet;
 
 import journey.dia.InfoDia;
 
@@ -23,7 +24,8 @@ public class Paciente {
     private String numeroContacto;
     private String ocupacion;
 
-    public ArrayList<InfoDia> infoDiaria = new ArrayList<>();
+    // public SortedSet<InfoDia> infoDiaria = new TreeSet<>((i, j) -> { return i.getFecha().compareTo(j.getFecha()); });
+    public SortedSet<InfoDia> infoDiaria = new TreeSet<>(Comparator.comparing(InfoDia::getFecha));
 
     public Paciente(String username, String password, String primerNombre, String apellido, LocalDate fechaNacimiento,
             Sexo sexo, float peso, int altura, String numeroContacto, String ocupacion) {
