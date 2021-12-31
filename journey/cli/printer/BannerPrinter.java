@@ -1,4 +1,4 @@
-package journey.cli.printer.banner;
+package journey.cli.printer;
 
 public class BannerPrinter {
     public static void printBanner(String border, String title) {

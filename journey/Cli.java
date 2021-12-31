@@ -5,8 +5,8 @@ import java.util.Scanner;
 
 import journey.alimentacion.Alimento;
 import journey.alimentacion.InfoAlimentacion;
-import journey.cli.printer.banner.BannerPrinter;
-import journey.cli.printer.infoDia.InfoDiaPrinter;
+import journey.cli.printer.BannerPrinter;
+import journey.cli.printer.InfoDiaPrinter;
 import journey.dia.Emocion;
 import journey.dia.InfoDia;
 import journey.ejercicio.InfoEjercicio;
