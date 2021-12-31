@@ -14,11 +14,12 @@ public class PacientePrinter {
 
         System.out.println("Peso: " + paciente.getPeso() + "kg");
         System.out.println("Altura: " + paciente.getAltura() + "cm\n");
+        System.out.println("IMC: " + paciente.imc());
 
         System.out.println("Número de contacto: " + paciente.getNumeroContacto());
         System.out.println("Ocupación: " + paciente.getOcupacion() + "\n");
 
         BannerPrinter.printHeader2("Diagnóstico general");
-        System.out.println("BMI: " + paciente.bmi());
+        System.out.println("IMC: " + paciente.diagnosticoIMC());
     }
 }

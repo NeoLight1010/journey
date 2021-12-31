@@ -67,10 +67,37 @@ public class Paciente {
         return (int) ChronoUnit.YEARS.between(this.getFechaNacimiento(), LocalDate.now());
     }
 
-    public float bmi() {
+    public float imc() {
         float alturaM = (float) this.getAltura() / 100f;
 
         return (this.getPeso()) / (alturaM * alturaM);
+    }
+
+    public String diagnosticoIMC() {
+        var imc = this.imc();
+
+        if (imc < 16)
+            return "Peso insuficiente. Muy grave.";
+        
+        if (imc < 17)
+            return "Peso bajo severo.";
+
+        if (imc < 18.5)
+            return "Peso bajo.";
+
+        if (imc < 25)
+            return "Peso normal.";
+
+        if (imc < 30)
+            return "Sobrepeso.";
+
+        if (imc < 35)
+            return "Obesidad grado I.";
+
+        if (imc < 40)
+            return "Obesidad grado II.";
+
+        return "Obesidad grado III.";
     }
 
     // Getters and setters
