@@ -1,9 +1,6 @@
 package journey.cli.printer;
 
-import java.util.HashMap;
-
 import journey.Constantes;
-import journey.alimentacion.Alimento;
 import journey.dia.InfoDia;
 
 public class InfoDiaPrinter {
