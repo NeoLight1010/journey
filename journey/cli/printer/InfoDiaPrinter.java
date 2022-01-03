@@ -32,6 +32,6 @@ public class InfoDiaPrinter {
         System.out.println("Calorías totales del día: " + alimentacion.caloriasTotales() + "\n");
 
         BannerPrinter.printHeader2("Diagnóstico del día");
-        System.out.println("- Ejercicio: " + infoDia.diagnosticoDia());
+        System.out.println("- Ejercicio: " + infoDia.getInfoEjercicio().diagnostico());
     }
 }
