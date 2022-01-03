@@ -104,6 +104,28 @@ public class Paciente {
         return "Obesidad grado III.";
     }
 
+    /**Calcula la media consumo ideal de calorías diarias de acuerdo a las fórmulas de Harris-Bennedict.
+     *
+     * Se sugiere utilizar un rango recomendad de +-100.
+     * */
+    public float idealCaloriasDiariasMedia() {
+        if (this.getSexo() == Sexo.MASCULINO) {
+            return (66 + (13.7f * this.getPeso())) + ((5f * this.getAltura())   - (6.8f * this.edad())) * this.factorActividad();
+        }
+
+        return (655 + (9.6f * this.getPeso())) + ((1.8f * this.getAltura()) - (4.7f * this.edad())) * this.factorActividad();
+    }
+
+    /**Devuelve el mínimo de calorías diarias recomendadas usando las fórmulas de Harris-Bennedict con un error de +-100.*/
+    public float idealCaloriasDiariasMinimo() {
+        return this.idealCaloriasDiariasMedia() - 100;
+    }
+
+    /**Devuelve el máximo de calorías diarias recomendadas usando las fórmulas de Harris-Bennedict con un error de +-100.*/
+    public float idealCaloriasDiariasMaximo() {
+        return this.idealCaloriasDiariasMedia() + 100;
+    }
+
     /**Calcula el factor de actividad, definido según la cantidad de veces promedio de ejercicio semanal.
      *
      * Si el número de entradas en el diario es menor a MINIMO_ENTRADAS_CALCULO_EJERCICIO, se asume que el factor de actividad es el mínimo (1.2).

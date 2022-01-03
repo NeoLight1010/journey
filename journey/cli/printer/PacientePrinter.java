@@ -19,7 +19,8 @@ public class PacientePrinter {
         System.out.println("Número de contacto: " + paciente.getNumeroContacto());
         System.out.println("Ocupación: " + paciente.getOcupacion() + "\n");
 
-        BannerPrinter.printHeader2("Diagnóstico general");
-        System.out.println("IMC: " + paciente.diagnosticoIMC());
+        BannerPrinter.printHeader2("Información de diagnóstico");
+        System.out.println("- IMC: " + paciente.diagnosticoIMC());
+        System.out.println("- Calorías diarias recomendadas: [" + paciente.idealCaloriasDiariasMinimo() + ", " + paciente.idealCaloriasDiariasMaximo() + "]");
     }
 }
