@@ -31,7 +31,10 @@ public class InfoDiaPrinter {
 
         System.out.println("Calorías totales del día: " + alimentacion.caloriasTotales() + "\n");
 
+        float minCal = infoDia.getPaciente().idealCaloriasDiariasMinimo();
+        float maxCal = infoDia.getPaciente().idealCaloriasDiariasMaximo();
         BannerPrinter.printHeader2("Diagnóstico del día");
         System.out.println("- Ejercicio: " + infoDia.getInfoEjercicio().diagnostico());
+        System.out.println("- Alimentación: " + infoDia.getInfoAlimentacion().diagnostico(minCal, maxCal) + ". Rango recomendado: " + infoDia.getPaciente().rangoIdealCalorias());
     }
 }

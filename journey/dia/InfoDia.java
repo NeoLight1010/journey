@@ -4,14 +4,17 @@ import java.time.LocalDate;
 
 import journey.alimentacion.InfoAlimentacion;
 import journey.ejercicio.InfoEjercicio;
+import journey.paciente.Paciente;
 
 public class InfoDia {
+    private Paciente paciente;
     private LocalDate fecha;
     private Emocion emocion;
     private InfoEjercicio infoEjercicio;
     private InfoAlimentacion infoAlimentacion;
 
-    public InfoDia(LocalDate fecha, Emocion emocion, InfoEjercicio infoEjercicio, InfoAlimentacion infoAlimentacion) {
+    public InfoDia(Paciente paciente, LocalDate fecha, Emocion emocion, InfoEjercicio infoEjercicio, InfoAlimentacion infoAlimentacion) {
+        this.paciente = paciente;
         this.fecha = fecha;
         this.emocion = emocion;
         this.infoEjercicio = infoEjercicio;
@@ -19,6 +22,10 @@ public class InfoDia {
     }
 
     // Getters and setters
+    public Paciente getPaciente() {
+        return this.paciente;
+    }
+
     public LocalDate getFecha() {
         return this.fecha;
     }

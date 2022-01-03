@@ -28,4 +28,15 @@ public class InfoAlimentacion {
 
         return resultado;
     }
+
+    public String diagnostico(float minimoRecomendado, float maximoRecomendado) {
+        var caloriasTotales = this.caloriasTotales();
+
+        if (caloriasTotales < minimoRecomendado)
+            return "Tienes una alimentación desbalanceada. Procura consumir más calorías.";
+        if (caloriasTotales > maximoRecomendado)
+            return "Tienes una alimentación desbalanceada. Procura consumir menos calorías.";
+
+        return "¡Felicidades! Tu alimentación está dentro del rango de consumo de calorías recomendadas.";
+    }
 }

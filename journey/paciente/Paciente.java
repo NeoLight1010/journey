@@ -172,6 +172,10 @@ public class Paciente {
         return (int) Math.ceil(vecesEjercicioPorDia * 7);
     }
 
+    public String rangoIdealCalorias() {
+        return "[" + idealCaloriasDiariasMinimo() + ", " + idealCaloriasDiariasMaximo() + "]";
+    }
+
     // Getters and setters
     public String getUsername() {
         return username;

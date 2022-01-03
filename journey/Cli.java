@@ -170,7 +170,7 @@ public class Cli {
         }
 
         // Actualizar datos
-        var infoDia = new InfoDia(fecha, emocion, infoEjercicio, infoAlimentacion);
+        var infoDia = new InfoDia(app.loggedInPaciente, fecha, emocion, infoEjercicio, infoAlimentacion);
         app.loggedInPaciente.infoDiaria.add(infoDia);
 
         System.out.println("¡Información diaria añadida exitosamente!");
