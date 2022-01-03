@@ -9,6 +9,8 @@ import java.util.TreeSet;
 import journey.dia.InfoDia;
 
 public class Paciente {
+    static int MINIMO_ENTRADAS_CALCULO_EJERCICIO = 5;
+
     private String username;
     private String password;
     private String primerNombre;
@@ -100,6 +102,52 @@ public class Paciente {
             return "Obesidad grado II.";
 
         return "Obesidad grado III.";
+    }
+
+    /**Calcula el factor de actividad, definido según la cantidad de veces promedio de ejercicio semanal.
+     *
+     * Si el número de entradas en el diario es menor a MINIMO_ENTRADAS_CALCULO_EJERCICIO, se asume que el factor de actividad es el mínimo (1.2).
+     * */
+    public float factorActividad() {
+        if (this.infoDiaria.size() < MINIMO_ENTRADAS_CALCULO_EJERCICIO) {
+            return 1.2f;
+        }
+
+        int vecesEjercicioSemana = this.vecesEjercicioPorSemana();
+
+        if (vecesEjercicioSemana == 0)
+            return 1.2f;
+
+        if (vecesEjercicioSemana <= 3)
+            return 1.375f; 
+
+        if (vecesEjercicioSemana <= 5)
+            return 1.55f;
+
+        if (vecesEjercicioSemana <= 7)
+            return 1.725f;
+
+        return 1.9f;
+    }
+
+    /**Devuelve un aproximado de las veces que el paciente realiza ejercicio por semana.*/
+    public int vecesEjercicioPorSemana() {
+        // Calcular cantidad de días que ha hecho ejercicio.
+        int diasHechoEjercicio = 0;
+        for (var infoDia : this.infoDiaria) {
+            if (infoDia.getInfoEjercicio().getTiempo() > 0) {
+                diasHechoEjercicio += 1;
+            }
+        }
+
+        // Cantidad de días entre el primer y el úlitmo entry del journal.
+        LocalDate primerDia = this.infoDiaria.first().getFecha();
+        LocalDate ultimoDia = this.infoDiaria.last().getFecha();
+        long rangoDiasDiario = ChronoUnit.DAYS.between(primerDia, ultimoDia);
+
+        float vecesEjercicioPorDia = (float) diasHechoEjercicio / rangoDiasDiario;
+        // 2.46
+        return (int) Math.ceil(vecesEjercicioPorDia * 7);
     }
 
     // Getters and setters

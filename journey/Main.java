@@ -30,6 +30,7 @@ class Main {
         Scanner scanner = new Scanner(System.in);
 
         while (app.isRunning) {
+            System.out.println();
             if (app.loggedInPaciente == null) {
                 Cli.menuNotLoggedIn(app, scanner);
             } else {

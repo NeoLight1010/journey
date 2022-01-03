@@ -17,7 +17,7 @@ import journey.paciente.Sexo;
 
 public class Cli {
     public static void menuNotLoggedIn(Main app, Scanner scanner) {
-        System.out.println("Menú principal");
+        BannerPrinter.printHeader1("Menú Principal");
         System.out.println("1. Iniciar sesión.");
         System.out.println("2. Registrarse.");
         System.out.println("3. Salir.");
@@ -41,13 +41,14 @@ public class Cli {
     }
 
     public static void menuLoggedIn(Main app, Scanner scanner) {
-        System.out.println("Menú");
+        BannerPrinter.printHeader1("Menú");
         System.out.println("1. Ingresar información de un día.");
-        System.out.println("2. Visualizar información diaria.");
+        System.out.println("2. Visualizar información y diagnósticos diarios.");
         System.out.println("3. Visualizar perfil de paciente.");
-        System.out.println("4. Cerrar sesión.");
+        System.out.println("4. Diagnóstico general del paciente.");
+        System.out.println("5. Cerrar sesión.");
 
-        int opcion = Input.leerEnteroEntre(scanner, ": ", 1, 4);
+        int opcion = Input.leerEnteroEntre(scanner, ": ", 1, 5);
 
         switch (opcion) {
             case 1:
@@ -58,6 +59,9 @@ public class Cli {
                 break;
             case 3:
                 cliVisualizarPerfilPaciente(app, scanner);
+                break;
+            case 4:
+                cliDiagnosticoGeneralPaciente(app, scanner);
                 break;
             default:
                 app.loggedInPaciente = null;
@@ -214,6 +218,13 @@ public class Cli {
 
     private static void cliVisualizarPerfilPaciente(Main app, Scanner scanner) {
         PacientePrinter.imprimirPerfilPaciente(app.loggedInPaciente);
+    }
+
+    private static void cliDiagnosticoGeneralPaciente(Main app, Scanner scaner) {
+        BannerPrinter.printHeader1("Diagnóstico general");
+
+        BannerPrinter.printHeader2("Ejercicio");
+        System.out.println("Factor de actividad: " + app.loggedInPaciente.factorActividad());
     }
 
     // Mensajes de error
