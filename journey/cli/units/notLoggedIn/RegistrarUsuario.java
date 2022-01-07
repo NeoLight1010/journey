@@ -37,7 +37,7 @@ public class RegistrarUsuario implements Unit {
         float peso = Input.leerFloatPositivo(scanner, "Ingrese el peso del paciente (en kg):\n");
         int altura = Input.leerEnteroEntre(scanner, "Ingrese la altura del paciente (en cm):\n", 1, 250);
 
-        String numeroContacto = Input.leerString(scanner, "Ingrese un número de contacto:\n");
+        String numeroContacto = Input.leerNumeroCelular(scanner, "Ingrese un número celular de contacto:\n");
         String ocupacion = Input.leerAlfa(scanner, "Ingrese la ocupación del paciente:\n", "La ocupación no puede contener caracteres no-alfabéticos.");
 
         Paciente paciente = new Paciente(username, password, nombre, apellido, fechaNacimiento, sexo, peso, altura,

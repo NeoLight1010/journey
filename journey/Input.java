@@ -99,6 +99,28 @@ public class Input {
         return leerStringValidado(scanner, prompt, validador, mensajeError);
     }
 
+    /**Lee un texto y valida que corresponda a un número celular de Ecuador.
+     *
+     * Debe comenzar en 09 y tener 10 dígitos en total.*/
+    public static String leerNumeroCelular(Scanner scanner, String prompt) {
+        Predicate<String> validador = (str) -> {
+            if (str.charAt(0) != '0' || str.charAt(1) != '9')
+                return false;
+
+            if (str.length() != 10)
+                return false;
+
+            for (var c : str.toCharArray()) {
+                if (!Character.isDigit(c))
+                    return false;
+            }
+
+            return true;
+        };
+
+        return leerStringValidado(scanner, prompt, validador, "Número celular inválido. Asegúrese que sea de Ecuador, comience en 09, y tenga 10 dígitos en total.");
+    }
+
     public static LocalDate leerFecha(Scanner scanner, String prompt) {
         while(true) {
             try {
