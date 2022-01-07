@@ -8,6 +8,8 @@ import java.util.Scanner;
 import journey.alimentacion.Alimento;
 import journey.alimentacion.InfoAlimentacion;
 import journey.alimentacion.TipoAlimento;
+import journey.cli.units.MenuLoggedIn;
+import journey.cli.units.MenuNotLoggedIn;
 import journey.dia.Emocion;
 import journey.dia.InfoDia;
 import journey.ejercicio.InfoEjercicio;
@@ -15,12 +17,12 @@ import journey.ejercicio.IntensidadEjercicio;
 import journey.paciente.Paciente;
 import journey.paciente.Sexo;
 
-class Main {
-    boolean isRunning = true;
+public class Main {
+    public boolean isRunning = true;
 
-    ArrayList<Alimento> bancoAlimentos = new ArrayList<>();
-    HashMap<String, Paciente> pacientes = new HashMap<>();
-    Paciente loggedInPaciente = null;
+    public ArrayList<Alimento> bancoAlimentos = new ArrayList<>();
+    public HashMap<String, Paciente> pacientes = new HashMap<>();
+    public Paciente loggedInPaciente = null;
 
     public static void main(String[] args) {
         Main app = new Main();
@@ -32,9 +34,9 @@ class Main {
         while (app.isRunning) {
             System.out.println();
             if (app.loggedInPaciente == null) {
-                Cli.menuNotLoggedIn(app, scanner);
+                new MenuNotLoggedIn().display(app, scanner);
             } else {
-                Cli.menuLoggedIn(app, scanner);
+                new MenuLoggedIn().display(app, scanner);
             }
         }
     }
