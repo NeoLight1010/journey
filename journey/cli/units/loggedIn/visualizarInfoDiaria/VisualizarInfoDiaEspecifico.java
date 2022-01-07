@@ -12,7 +12,7 @@ import journey.dia.InfoDia;
 
 public class VisualizarInfoDiaEspecifico implements Unit {
     public void display(Main app, Scanner scanner) {
-        LocalDate fecha = Input.leerFecha(scanner, "Ingrese la fecha: (" + Constantes.DATE_PATTERN + "): ");
+        LocalDate fecha = Input.leerFechaNoFutura(scanner, "Ingrese la fecha: (" + Constantes.DATE_PATTERN + "): ");
 
         InfoDia infoDia = app.loggedInPaciente.buscarInfoDiaPorFecha(fecha);
 

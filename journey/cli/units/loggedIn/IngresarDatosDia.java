@@ -16,7 +16,7 @@ import journey.ejercicio.IntensidadEjercicio;
 
 public class IngresarDatosDia implements Unit {
     public void display(Main app, Scanner scanner) {
-        LocalDate fecha = Input.leerFecha(scanner, "Ingrese la fecha: ");
+        LocalDate fecha = Input.leerFechaNoFutura(scanner, "Ingrese la fecha: ");
         // TODO: validar registros dobles en el mismo día.
         // NOTE: dar opción para sobreescribir registro.
 

@@ -29,7 +29,7 @@ public class RegistrarUsuario implements Unit {
 
         String nombre = Input.leerString(scanner, "Ingrese el nombre del paciente:\n");
         String apellido = Input.leerString(scanner, "Ingrese el apellido del paciente:\n");
-        LocalDate fechaNacimiento = Input.leerFecha(scanner, "Ingrese la fecha de nacimiento (dd-mm-yyyy):\n");
+        LocalDate fechaNacimiento = Input.leerFechaNoFutura(scanner, "Ingrese la fecha de nacimiento (dd-mm-yyyy):\n");
 
         int sexoInt = Input.leerEnteroEntre(scanner, "Ingrese el sexo del paciente (1. hombre, 2. mujer):\n", 1, 2);
         Sexo sexo = sexoInt == 1 ? Sexo.MASCULINO : Sexo.FEMENINO;

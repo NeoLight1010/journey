@@ -65,6 +65,21 @@ public class Input {
         }
     }
 
+    public static LocalDate leerFechaNoFutura(Scanner scanner, String prompt) {
+        LocalDate fecha = null;
+
+        while(true) {
+            fecha = leerFecha(scanner, prompt);
+
+            if (fecha.isBefore(LocalDate.now()))
+                break;
+
+            System.out.println("Ingrese una fecha pasada.");
+        }
+
+        return fecha;
+    }
+
     // Float
     public static float leerFloat(Scanner scanner, String prompt) {
         while(true) {
