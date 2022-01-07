@@ -34,8 +34,8 @@ public class RegistrarUsuario implements Unit {
         int sexoInt = Input.leerEnteroEntre(scanner, "Ingrese el sexo del paciente (1. hombre, 2. mujer):\n", 1, 2);
         Sexo sexo = sexoInt == 1 ? Sexo.MASCULINO : Sexo.FEMENINO;
 
-        float peso = Input.leerFloat(scanner, "Ingrese el peso del paciente (en kg):\n");
-        int altura = Input.leerEntero(scanner, "Ingrese la altura del paciente (en cm):\n");
+        float peso = Input.leerFloatPositivo(scanner, "Ingrese el peso del paciente (en kg):\n");
+        int altura = Input.leerEnteroEntre(scanner, "Ingrese la altura del paciente (en cm):\n", 1, 250);
 
         String numeroContacto = Input.leerString(scanner, "Ingrese un número de contacto:\n");
         String ocupacion = Input.leerString(scanner, "Ingrese la ocupación del paciente:\n");

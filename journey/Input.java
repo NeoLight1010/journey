@@ -12,7 +12,7 @@ public class Input {
     }
 
     public static int leerEntero(Scanner scanner, String prompt) {
-        while(true) {
+        while (true) {
             try {
                 System.out.print(prompt);
                 return Integer.parseInt(scanner.nextLine());
@@ -20,6 +20,21 @@ public class Input {
                 imprimirErrorInputGenerico();
             }
         }
+    }
+
+    public static int leerEnteroNoNegativo(Scanner scanner, String prompt) {
+        int input = 0;
+
+        while (true) {
+            input = leerEntero(scanner, prompt);
+
+            if (input >= 0)
+                break;
+
+            System.out.println("Ingrese un entero no-negativo.");
+        }
+
+        return input;
     }
 
     public static int leerEnteroEntre(Scanner scanner, String prompt, int start, int end) {
@@ -90,6 +105,21 @@ public class Input {
                 imprimirErrorInputGenerico();
             }
         }
+    }
+
+    public static float leerFloatPositivo(Scanner scanner, String prompt) {
+        float input = 0;
+
+        while (true) {
+            input = leerFloat(scanner, prompt);
+
+            if (input > 0)
+                break;
+
+            System.out.println("Ingrese un valor positivo.");
+        }
+
+        return input;
     }
 
     // Iterable

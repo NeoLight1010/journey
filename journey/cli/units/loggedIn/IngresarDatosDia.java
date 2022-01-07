@@ -15,6 +15,7 @@ import journey.ejercicio.InfoEjercicio;
 import journey.ejercicio.IntensidadEjercicio;
 
 public class IngresarDatosDia implements Unit {
+    // TODO: refactor!!!!!!
     public void display(Main app, Scanner scanner) {
         LocalDate fecha = Input.leerFechaNoFutura(scanner, "Ingrese la fecha: ");
         // TODO: validar registros dobles en el mismo día.
@@ -23,7 +24,7 @@ public class IngresarDatosDia implements Unit {
         Emocion emocion = Input.leerEnum(scanner, "Ingrese la emoción predominante: ", Emocion.class);
 
         // Leer InfoEjercicio
-        int tiempoEjercicio = Input.leerEntero(scanner, "¿Cuántos minutos de ejercicio hizo en el día?: ");
+        int tiempoEjercicio = Input.leerEnteroNoNegativo(scanner, "¿Cuántos minutos de ejercicio hizo en el día?: ");
 
         IntensidadEjercicio intensidad = Input.leerEnum(scanner, "Ingrese la intensidad de ejercicio realizado: ",
                 IntensidadEjercicio.class);
@@ -34,32 +35,32 @@ public class IngresarDatosDia implements Unit {
         var infoAlimentacion = new InfoAlimentacion();
 
         BannerPrinter.printHeader1("DESAYUNO");
-        int n = Input.leerEntero(scanner, "¿Cuántos alimentos distintos consumió en el desayuno?");
+        int n = Input.leerEnteroNoNegativo(scanner, "¿Cuántos alimentos distintos consumió en el desayuno?");
 
         for (int i = 0; i < n; i++) {
 
             Alimento alimento = Input.leerArrayListOpciones(scanner, ": ", app.bancoAlimentos);
-            var porciones = Input.leerEntero(scanner, "¿Cuántas porciones de " + alimento.getNombre() + " consumió?: ");
+            var porciones = Input.leerEnteroNoNegativo(scanner, "¿Cuántas porciones de " + alimento.getNombre() + " consumió?: ");
 
             infoAlimentacion.desayuno.put(alimento, porciones);
         }
 
         BannerPrinter.printHeader1("ALMUERZO");
-        n = Input.leerEntero(scanner, "¿Cuántos alimentos distintos consumió en el almuerzo?");
+        n = Input.leerEnteroNoNegativo(scanner, "¿Cuántos alimentos distintos consumió en el almuerzo?");
 
         for (int i = 0; i < n; i++) {
             Alimento alimento = Input.leerArrayListOpciones(scanner, ": ", app.bancoAlimentos);
-            var porciones = Input.leerEntero(scanner, "¿Cuántas porciones de " + alimento.getNombre() + " consumió?: ");
+            var porciones = Input.leerEnteroNoNegativo(scanner, "¿Cuántas porciones de " + alimento.getNombre() + " consumió?: ");
 
             infoAlimentacion.almuerzo.put(alimento, porciones);
         }
 
         BannerPrinter.printHeader1("MERIENDA");
-        n = Input.leerEntero(scanner, "¿Cuántos alimentos distintos consumió en la merienda?");
+        n = Input.leerEnteroNoNegativo(scanner, "¿Cuántos alimentos distintos consumió en la merienda?");
 
         for (int i = 0; i < n; i++) {
             Alimento alimento = Input.leerArrayListOpciones(scanner, ": ", app.bancoAlimentos);
-            var porciones = Input.leerEntero(scanner, "¿Cuántas porciones de " + alimento.getNombre() + " consumió?: ");
+            var porciones = Input.leerEnteroNoNegativo(scanner, "¿Cuántas porciones de " + alimento.getNombre() + " consumió?: ");
 
             infoAlimentacion.merienda.put(alimento, porciones);
         }
