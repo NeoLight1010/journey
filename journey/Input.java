@@ -5,6 +5,7 @@ import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Scanner;
+import java.util.function.Predicate;
 
 public class Input {
     public static void imprimirErrorInputGenerico() {
@@ -67,6 +68,35 @@ public class Input {
 
             return input;
         }
+    }
+
+    public static String leerStringValidado(Scanner scanner, String prompt, Predicate<String> validador, String mensajeError) {
+        String input = null;
+
+        while (true) {
+            input = leerString(scanner, prompt);
+
+            if (validador.test(input))
+                break;
+
+            System.out.println(mensajeError);
+        }
+
+        return input;
+    }
+
+    /**Lee un texto y valida que no contenga caracteres que no sean letras.*/
+    public static String leerAlfa(Scanner scanner, String prompt, String mensajeError) {
+        Predicate<String> validador = (str) -> {
+            for (var c : str.toCharArray()) {
+                if (!Character.isLetter(c))
+                    return false;
+            }
+
+            return true;
+        };
+
+        return leerStringValidado(scanner, prompt, validador, mensajeError);
     }
 
     public static LocalDate leerFecha(Scanner scanner, String prompt) {
