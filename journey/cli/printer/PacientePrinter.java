@@ -22,5 +22,6 @@ public class PacientePrinter {
         BannerPrinter.printHeader2("Información de diagnóstico");
         System.out.println("- IMC: " + paciente.diagnosticoIMC());
         System.out.println("- Calorías diarias recomendadas: " + paciente.rangoIdealCalorias());
+        System.out.println("- Factor de actividad: " + paciente.factorActividad());
     }
 }
