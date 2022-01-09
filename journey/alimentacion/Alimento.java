@@ -11,6 +11,7 @@ public class Alimento {
         this.tipo = tipo;
     }
 
+    @Override
     public String toString() {
         return this.nombre;
     }

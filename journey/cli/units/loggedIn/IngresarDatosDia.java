@@ -3,7 +3,7 @@ package journey.cli.units.loggedIn;
 import java.time.LocalDate;
 import java.util.Scanner;
 
-import journey.Input;
+import journey.cli.Input;
 import journey.Main;
 import journey.alimentacion.Alimento;
 import journey.alimentacion.InfoAlimentacion;

@@ -1,4 +1,4 @@
-package journey;
+package journey.cli;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeParseException;
@@ -6,6 +6,8 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Scanner;
 import java.util.function.Predicate;
+
+import journey.Constantes;
 
 public class Input {
     public static void imprimirErrorInputGenerico() {

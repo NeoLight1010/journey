@@ -2,7 +2,7 @@ package journey.cli.units;
 
 import java.util.Scanner;
 
-import journey.Input;
+import journey.cli.Input;
 import journey.Main;
 import journey.cli.Unit;
 import journey.cli.printer.BannerPrinter;

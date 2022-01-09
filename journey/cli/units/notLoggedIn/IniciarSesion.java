@@ -3,7 +3,7 @@ package journey.cli.units.notLoggedIn;
 import java.util.Scanner;
 
 import journey.cli.Cli;
-import journey.Input;
+import journey.cli.Input;
 import journey.Main;
 import journey.cli.Unit;
 

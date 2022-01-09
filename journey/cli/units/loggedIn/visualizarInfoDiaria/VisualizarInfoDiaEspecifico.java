@@ -4,7 +4,7 @@ import java.time.LocalDate;
 import java.util.Scanner;
 
 import journey.Constantes;
-import journey.Input;
+import journey.cli.Input;
 import journey.Main;
 import journey.cli.Unit;
 import journey.cli.printer.InfoDiaPrinter;
