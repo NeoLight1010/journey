@@ -27,7 +27,6 @@ public class Paciente {
     private String numeroContacto;
     private String ocupacion;
 
-    // public SortedSet<InfoDia> infoDiaria = new TreeSet<>((i, j) -> { return i.getFecha().compareTo(j.getFecha()); });
     public SortedSet<InfoDia> infoDiaria = new TreeSet<>(Comparator.comparing(InfoDia::getFecha));
 
     public Paciente(String username, String password, String primerNombre, String apellido, LocalDate fechaNacimiento,
