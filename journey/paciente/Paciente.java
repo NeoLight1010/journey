@@ -9,6 +9,7 @@ import java.util.TreeSet;
 import journey.dia.InfoDia;
 
 public class Paciente {
+    /**Corresponde al número mínimo de InfoDias para calcular el diagnóstico de ejercicio, como el factor de actividad.*/
     static int MINIMO_ENTRADAS_CALCULO_EJERCICIO = 5;
 
     private String username;
